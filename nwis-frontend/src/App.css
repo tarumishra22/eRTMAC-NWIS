@@ -1,0 +1,65 @@
+@import "leaflet/dist/leaflet.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #04060a;
+  color: #f1f5f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* OpenStreetMap ko Military Dark Satellite map mein badalna */
+.map-dark-tiles {
+  filter: brightness(0.65) invert(1) contrast(3.5) hue-rotate(205deg) saturate(0.35) !important;
+}
+
+/* Geological Realistic Rock Textures */
+.texture-clay {
+  background: repeating-linear-gradient(45deg, #78350f22, #78350f22 10px, #451a0333 10px, #451a0333 20px), #1e130c;
+  border-left: 4px solid #b45309;
+}
+.texture-sandstone {
+  background: radial-gradient(circle, #f59e0b11 10%, transparent 20%), #141a0d;
+  background-size: 8px 8px;
+  border-left: 4px solid #d97706;
+}
+.texture-shale {
+  background: repeating-linear-gradient(0deg, #10b98115, #10b98115 4px, #064e3b22 4px, #064e3b22 8px), #071912;
+  border-left: 4px solid #10b981;
+}
+
+/* Subsurface Pulse Wave Animation */
+@keyframes seismic-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+.scanner-line {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(180deg, transparent, #10b981, transparent);
+  box-shadow: 0 0 15px #10b981;
+  animation: seismic-scan 3s infinite linear;
+}
+
+.threat-pulse {
+  animation: red-glow 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes red-glow {
+  0% { box-shadow: 0 0 10px rgba(239, 68, 68, 0.3); border-color: rgba(239, 68, 68, 0.5); }
+  100% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.9); border-color: rgba(239, 68, 68, 1); }
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #070a13; }
+::-webkit-scrollbar-thumb { background: #1a2233; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
